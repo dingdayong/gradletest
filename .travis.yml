@@ -24,7 +24,7 @@ deploy:
   provider: releases
   file_glob: true
   file: "${RELEASE_JAR_FILE}"
-  github-token: $GITHUB_TOKEN  
+  github-token: ${GITHUB_TOKEN} 
   skip_cleanup: true
   draft: true
   on:
