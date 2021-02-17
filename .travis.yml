@@ -23,9 +23,8 @@ install:
 deploy:
   provider: releases
   file_glob: true
-  file: "${RELEASE_JAR_FILE}"  
-  api_key:
-    secure: "$GITHUB_TOKEN"
+  file: "${RELEASE_JAR_FILE}"
+  github-token: $GITHUB_TOKEN  
   skip_cleanup: true
   draft: true
   on:
