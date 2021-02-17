@@ -17,6 +17,9 @@ before_deploy:
   - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
   - echo "Deploying $RELEASE_JAR_FILE to GitHub"
 
+install:
+  - true  
+
 deploy:
   provider: releases
   file_glob: true
@@ -26,7 +29,7 @@ deploy:
   skip_cleanup: true
   draft: true
   on:
-    tags: false
+    tags: true
   name: $TRAVIS_TAG
   tag_name: $TRAVIS_TAG
   body: "Generated release from Travis CI for build $TRAVIS_BUILD_NUMBER"    
