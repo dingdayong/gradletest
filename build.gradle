@@ -1,0 +1,60 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+allprojects {
+  repositories {
+    maven {
+      url 'https://maven.aliyun.com/repository/public'
+    }
+    maven {
+      credentials {
+        username '6024ec468e57bd6e42995a2e'
+        password 'B(7rF9sqZwF1'
+      }
+      url 'https://packages.aliyun.com/maven/repository/2075914-release-TeXwZU/'
+    }
+    maven {
+      credentials {
+        username '6024ec468e57bd6e42995a2e'
+        password 'B(7rF9sqZwF1'
+      }
+      url 'https://packages.aliyun.com/maven/repository/2075914-snapshot-CrtvXZ/'
+    }
+  }
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+project.group = 'com.ygsoft'
+project.archivesBaseName = 'gradletest'
+project.version = '1.0.0-SNAPSHOT'
+
+def artifactId = 'gradletest'
+
+apply plugin: 'maven'
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: 'https://packages.aliyun.com/maven/repository/2075914-release-TeXwZU/') {
+        authentication(
+       		userName: 'EHrB01',
+        	password: 'nXX0rR5gpU'
+        )
+    }
+    
+    snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2075914-snapshot-CrtvXZ/') {
+      authentication(
+        userName: 'EHrB01',
+        password: 'nXX0rR5gpU'
+      )
+    }
+      pom.version = project.version
+      pom.artifactId = artifactId
+      pom.groupId = project.group
+    }
+  }
+}
