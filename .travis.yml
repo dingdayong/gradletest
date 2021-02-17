@@ -11,6 +11,8 @@ script:
 deploy:
   provider: releases
   file: build/libs/gradletest-1.0.0-SNAPSHOT.jar
+  api_key:
+    secure: "$GITHUB_TOKEN"
   skip_cleanup: true
   on:
     tags: true
