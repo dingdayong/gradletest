@@ -7,3 +7,10 @@ jdk: oraclejdk8
 
 script:
   - gradle build --scan -s
+
+deploy:
+  provider: releases
+  file: build/libs/gradletest-1.0.0-SNAPSHOT.jar
+  skip_cleanup: true
+  on:
+    tags: true
