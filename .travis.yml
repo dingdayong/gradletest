@@ -3,15 +3,30 @@ install: skip
 
 os: linux
 dist: trusty
+sudo: required
+
 jdk: oraclejdk8
 
 script:
   - gradle build --scan -s
 
+notifications:
+  email: false
+
+before_deploy:
+  - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
+  - echo "Deploying $RELEASE_JAR_FILE to GitHub"
+
 deploy:
   provider: releases
+  file_glob: true
+  file: "${RELEASE_JAR_FILE}"  
   api_key:
     secure: "$GITHUB_TOKEN"
   skip_cleanup: true
+  draft: false
   on:
     tags: false
+  name: $TRAVIS_TAG
+  tag_name: $TRAVIS_TAG
+  body: "Generated release from Travis CI for build $TRAVIS_BUILD_NUMBER"    
