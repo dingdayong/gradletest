@@ -23,7 +23,7 @@ install:
 deploy:
   provider: releases
   file_glob: true
-  file: "${RELEASE_JAR_FILE}"  
+  file: "build/libs/gradletest-1.0.0-SNAPSHOT.jar" 
   api_key: "$GITHUB_TOKEN"
   skip_cleanup: true
   draft: true
