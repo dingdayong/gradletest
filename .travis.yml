@@ -26,7 +26,7 @@ deploy:
   file_glob: true
   file: "build/libs/gradletest-1.0.0-SNAPSHOT.jar" 
   api_key: "$GITHUB_TOKEN"
-  skip_cleanup: false
+  skip_cleanup: true
   draft: true
   on:
     tags: true
