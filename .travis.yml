@@ -13,8 +13,8 @@ addons:
     token: "$SONAR_TOKEN"
 
 script:
-  - sonar-scanner
   - gradle build --scan -s
+  - sonar-scanner
   - gradle task uploadArchives
 
 notifications:
@@ -28,7 +28,7 @@ deploy:
   file_glob: true
   file: "build/libs/gradletest-1.0.0-SNAPSHOT.jar" 
   api_key: "$GITHUB_TOKEN"
-  skip_cleanup: true
+  skip_cleanup: false
   draft: true
   on:
     tags: true
