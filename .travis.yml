@@ -7,6 +7,12 @@ sudo: required
 
 jdk: oraclejdk8
 
+addons:
+  sonarcloud:
+    organization: "$SONAR_ORG"
+    token:
+      secure: "$SONAR_TOKEN"
+
 script:
   - sonar-scanner
   - gradle build --scan -s
@@ -30,3 +36,7 @@ deploy:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'  
