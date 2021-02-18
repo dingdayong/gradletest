@@ -9,15 +9,10 @@ jdk: oraclejdk8
 
 script:
   - gradle build --scan -s
-  - gradle codeCoverageReport
   - gradle task uploadArchives -i
 
 notifications:
   email: false
-
-before_deploy:
-  - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
-  - echo "Deploying $RELEASE_JAR_FILE to GitHub"
 
 install:
   - true  
@@ -31,6 +26,6 @@ deploy:
   draft: true
   on:
     tags: true
-  name: $TRAVIS_TAG
-  tag_name: $TRAVIS_TAG
-  body: "Generated release from Travis CI for build $TRAVIS_BUILD_NUMBER"    
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

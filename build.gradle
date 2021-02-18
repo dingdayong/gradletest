@@ -1,6 +1,13 @@
+project.group = 'com.ygsoft'
+project.version = '1.0.0-SNAPSHOT'
+project.archivesBaseName = 'githubgradletest'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 allprojects {
   repositories {
@@ -24,34 +31,18 @@ allprojects {
   }
 }
 
-
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-
-task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
-
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
-
+jacocoTestReport {
     reports {
         xml.enabled true
-        xml.destination file("${buildDir}/reports/jacoco/report.xml")
         html.enabled false
-        csv.enabled false
     }
 }
 
-codeCoverageReport.dependsOn {
-    subprojects*.test
-}
-
-project.group = 'com.ygsoft'
-project.archivesBaseName = 'githubgradletest'
-project.version = '1.0.0-SNAPSHOT'
+check.dependsOn jacocoTestReport
 
 def artifactId = 'githubgradletest'
 
