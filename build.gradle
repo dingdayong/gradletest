@@ -1,7 +1,3 @@
-project.group = 'com.ygsoft'
-project.version = '1.0.0-SNAPSHOT'
-project.archivesBaseName = 'githubgradletest'
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
@@ -45,6 +41,10 @@ jacocoTestReport {
 check.dependsOn jacocoTestReport
 
 def artifactId = 'githubgradletest'
+
+project.group = 'com.ygsoft'
+project.version = '1.0.0-SNAPSHOT'
+project.archivesBaseName = 'githubgradletest'
 
 apply plugin: 'maven'
 
