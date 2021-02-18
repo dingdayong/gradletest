@@ -8,8 +8,9 @@ sudo: required
 jdk: oraclejdk8
 
 script:
+  - sonar-scanner
   - gradle build --scan -s
-  - gradle task uploadArchives -i
+  - gradle task uploadArchives
 
 notifications:
   email: false
