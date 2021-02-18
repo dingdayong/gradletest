@@ -12,7 +12,7 @@ addons:
 
 script:
   - gradle build --scan -s
-  - sonar-scanner
+  - sonar-scanner -X
   - gradle task uploadArchives
 
 notifications:
