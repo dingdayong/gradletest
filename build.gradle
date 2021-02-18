@@ -29,10 +29,10 @@ dependencies {
 }
 
 project.group = 'com.ygsoft'
-project.archivesBaseName = 'gradletest'
+project.archivesBaseName = 'githubgradletest'
 project.version = '1.0.0-SNAPSHOT'
 
-def artifactId = 'gradletest'
+def artifactId = 'githubgradletest'
 
 apply plugin: 'maven'
 

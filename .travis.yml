@@ -9,6 +9,7 @@ jdk: oraclejdk8
 
 script:
   - gradle build --scan -s
+  - gradle uploadArchives
 
 notifications:
   email: false
