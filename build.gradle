@@ -1,3 +1,7 @@
+plugins {
+    id "org.sonarqube" version "2.7.1"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
@@ -69,4 +73,11 @@ uploadArchives {
       pom.groupId = project.group
     }
   }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "gradle java project analyzed on SonarCloud using Travis"
+        property "sonar.projectKey", "gradletest-project"
+    }
 }

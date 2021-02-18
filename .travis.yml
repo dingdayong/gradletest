@@ -12,7 +12,7 @@ addons:
 
 script:
   - gradle build --scan -s
-  - sonar-scanner -X
+  - gradle sonarqube
   - gradle task uploadArchives
 
 notifications:
@@ -37,3 +37,4 @@ after_success:
 cache:
   directories:
     - '$HOME/.sonar/cache'  
+    - '$HOME/.m2/repository'
