@@ -42,14 +42,14 @@ uploadArchives {
       repository(url: 'https://packages.aliyun.com/maven/repository/2075914-release-TeXwZU/') {
         authentication(
        		userName: 'EHrB01',
-        	password: 'nXX0rR5gpU'
+        	password: System.getenv("MAVEN_TOKEN") 
         )
     }
     
     snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2075914-snapshot-CrtvXZ/') {
       authentication(
         userName: 'EHrB01',
-        password: 'nXX0rR5gpU'
+        password: System.getenv("MAVEN_TOKEN") 
       )
     }
       pom.version = project.version
