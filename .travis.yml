@@ -10,8 +10,7 @@ jdk: oraclejdk8
 addons:
   sonarcloud:
     organization: "$SONAR_ORG"
-    token:
-      secure: "$SONAR_TOKEN"
+    token: "$SONAR_TOKEN"
 
 script:
   - sonar-scanner
